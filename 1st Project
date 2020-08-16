@@ -1,0 +1,94 @@
+from tkinter import *
+
+window=Tk()
+
+def getUps(productX,productY,StockX,StockY):
+	ups1 = int(StockX/productX)*int(StockY/productY)
+	ups2 = int(StockX/productY)*int(StockY/productX)
+
+	if (ups1 > ups2):
+		total = ups1
+	else:
+		total = ups2
+
+	return total
+
+def compute():
+	answer = str(getUps((e1.get(),e2.get(),e3.get(),e4.get())))
+	myLabelAnswer.config(text=answer)
+
+
+#Row 0
+myLabel = Label(window, text='Product', justify='center')
+myLabel.grid(row=0,column=1,columnspan=3)
+
+myLabel = Label(window, text='Stock', justify='center')
+myLabel.grid(row=0,column=5,columnspan=3)
+
+#Row 1
+myLabel1 = Label(window, text="Orientation")
+myLabel1.grid(row=1,column=0)
+
+myLabel = Label(window, text="Orientation")
+myLabel.grid(row=1,column=4)
+
+myLabel = Label(window, text='x')
+myLabel.grid(row=1,column=2)
+
+myLabel = Label(window, text='x')
+myLabel.grid(row=1,column=6)
+
+#Row 2
+myLabel = Label(window, text='Width')
+myLabel.grid(row=2,column=1)
+
+myLabel = Label(window, text='Height')
+myLabel.grid(row=2,column=3)
+
+myLabel = Label(window, text='Width')
+myLabel.grid(row=2,column=5)
+
+myLabel = Label(window, text='Height')
+myLabel.grid(row=2,column=7)
+
+#Row 4
+myLabelAnswer = Label(window, text=" ")
+myLabelAnswer.grid(row=4,column=0)
+#####################################
+
+productWidth=StringVar()
+e1=Entry(window, textvariable=productWidth,width=10)
+e1.grid(row=1,column=1,)
+
+productHeight=StringVar()
+e2=Entry(window, textvariable=productHeight,width=10)
+e2.grid(row=1,column=3,)
+
+stockWidth=StringVar()
+e3=Entry(window, textvariable=stockWidth,width=10)
+e3.grid(row=1,column=5,)
+
+stockHeight=StringVar()
+e4=Entry(window, textvariable=stockHeight,width=10)
+e4.grid(row=1,column=7,)
+
+############################
+b1=Button(window,text="Compute", width=50, command=compute)
+b1.grid(row=3,column=0,columnspan=8)
+
+
+#Label = Label(window, text="Title")
+#l1.grid(row=0,column=0)
+
+#l1 = Label(window, text="Author")
+#l1.grid(row=0,column=2)
+
+
+#l1 = Label(window, text="Year")
+#l1.grid(row=1,column=0)
+
+
+#l1 = Label(window, text="ISBN")
+#l1.grid(row=1,column=2)
+
+window.mainloop()
